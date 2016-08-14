@@ -12,7 +12,7 @@ import { ENV_PROVIDERS, decorateComponentRef } from './platform/environment';
 /*
 * Global styles
 */
-import './styles/style.css';
+import './styles/style.scss';
 
 /*
 * App Component
