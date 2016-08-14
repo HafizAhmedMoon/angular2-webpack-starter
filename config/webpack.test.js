@@ -151,6 +151,28 @@ module.exports = {
        */
       {test: /\.css$/, loaders: ['exports-loader?module.exports.toString()', 'css-loader'], include: helpers.root('src', 'app')},
 
+      /*
+       * ExtractTextPlugin, style loader, css loader and sass loader support for global *.sass and *.scss files
+       * Inject css files as globally in a bundle
+       *
+       */
+      {
+        test: /\.(sass|scss)$/,
+        exclude: helpers.root('src', 'app'),
+        loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'sass-loader'])
+      },
+
+      /*
+       * to string, css loader and sass loader support for *.sass and *.scss files
+       * Returns file content as string
+       *
+       */
+      {
+        test: /\.(sass|scss)$/,
+        include: helpers.root('src', 'app'),
+        loaders: ['exports-loader?module.exports.toString()', 'css-loader', 'sass-loader']
+      },
+
       /**
        * Raw loader support for *.html
        * Returns file content as string
