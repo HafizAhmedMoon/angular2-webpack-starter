@@ -179,7 +179,10 @@ module.exports = {
       {
         test: /\.(sass|scss)$/,
         exclude: helpers.root('src', 'app'),
-        loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'sass-loader'])
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: 'css-loader?-url!sass-loader'
+        })
       },
 
       /*
@@ -190,7 +193,7 @@ module.exports = {
       {
         test: /\.(sass|scss)$/,
         include: helpers.root('src', 'app'),
-        loaders: ['exports-loader?module.exports.toString()', 'css-loader', 'sass-loader']
+        loaders: ['exports-loader?module.exports.toString()', 'css-loader?-url', 'sass-loader']
       },
 
       /* Raw loader support for *.html

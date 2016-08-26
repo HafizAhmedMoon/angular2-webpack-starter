@@ -9,7 +9,7 @@ import { bootloader } from '@angularclass/hmr';
 /*
  * Global styles
  */
-import './styles/style.css';
+import './styles/style.scss';
 
 /*
  * App Module
